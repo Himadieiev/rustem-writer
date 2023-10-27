@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="container">
         <div className={css.headerTop}>
           <NavLink to="/" className={css.logo}>
-            RHF
+            RH
           </NavLink>
           <nav className={css.nav}>
             <NavLink className={css.link} to="/">
