@@ -1,0 +1,20 @@
+.btn {
+  padding: 7px 15px;
+  border-radius: 10px;
+}
+
+.login {
+  background-color: rgb(230, 224, 224);
+}
+
+.login:hover {
+  background-color: rgb(211, 206, 206);
+}
+
+.register {
+  background-color: rgb(206, 239, 206);
+}
+
+.register:hover {
+  background-color: rgb(186, 215, 186);
+}

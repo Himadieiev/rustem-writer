@@ -1,0 +1,35 @@
+.header {
+  background-color: rgb(252, 252, 252);
+}
+
+.headerTop {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.link:hover {
+  color: rgb(83, 83, 83);
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+.decor {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(161, 156, 156);
+}
