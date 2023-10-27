@@ -21,6 +21,7 @@
 
 .text {
   margin-top: 20px;
+  line-height: 1.5;
 }
 
 .textContains {
@@ -29,4 +30,42 @@
 
 .contains {
   color: rgb(100, 98, 98);
+}
+
+.info {
+  display: flex;
+  margin-top: 20px;
+  color: rgb(60, 59, 59);
+  font-size: 16px;
+}
+
+.likesWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.viewsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-left: 30px;
+}
+
+.infoTextWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-left: 30px;
+}
+
+.decor {
+  height: 20px;
+  width: 1.5px;
+  background-color: gray;
+  margin-left: 10px;
+  margin-right: 10px;
 }
