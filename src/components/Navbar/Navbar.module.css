@@ -1,5 +1,8 @@
 .header {
   background-color: rgb(252, 252, 252);
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 }
 
 .headerTop {
@@ -12,11 +15,13 @@
 .logo {
   font-size: 25px;
   font-weight: 900;
+  font-style: italic;
 }
 
 .nav {
   display: flex;
   gap: 40px;
+  font-weight: 500;
 }
 
 .link:hover {

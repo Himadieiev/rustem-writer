@@ -9,7 +9,7 @@ const Works = () => {
   return (
     <main className={css.works}>
       <div className="container">
-        <Hero />
+        <Hero bg="bg-works" />
       </div>
       <div className={css.worksWrapper}></div>
       <ul className={css.list}>

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <main className={css.home}>
       <div className="container">
-        <Hero />
+        <Hero bg="bg-home" />
       </div>
     </main>
   );

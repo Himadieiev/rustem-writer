@@ -1,5 +1,6 @@
 .works {
   min-height: calc(100vh - 160px);
+  padding-top: 80px;
 }
 
 .worksWrapper {
