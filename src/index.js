@@ -6,11 +6,9 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/rustem-writer">
     <React.StrictMode>
       <App />
     </React.StrictMode>
   </BrowserRouter>
 );
-
-// basename = "/rustem-writer";
