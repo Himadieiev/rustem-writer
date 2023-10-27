@@ -16,7 +16,7 @@
 
 .nav {
   display: flex;
-  gap: 20px;
+  gap: 40px;
 }
 
 .link:hover {
@@ -29,7 +29,7 @@
 }
 
 .decor {
-  height: 1px;
+  height: 2px;
   width: 100%;
-  background-color: rgb(161, 156, 156);
+  background-color: rgb(219, 216, 216);
 }
