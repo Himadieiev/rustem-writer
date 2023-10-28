@@ -2,3 +2,15 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
