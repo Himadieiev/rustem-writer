@@ -7,3 +7,13 @@
   background-position: center center;
   height: 100%;
 }
+
+.greet {
+  margin-top: 50px;
+  font-size: 50px;
+  font-weight: 500;
+  color: rgb(67, 66, 66);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
