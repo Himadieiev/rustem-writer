@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineStar, AiOutlineEye, AiOutlineCheck } from "react-icons/ai";
+import { AiOutlineLike, AiOutlineEye, AiOutlineCheck } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 import css from "./BookItem.module.css";
@@ -21,7 +21,7 @@ const BookItem = ({ book }) => {
         </p>
         <div className={css.info}>
           <div className={css.likesWrapper}>
-            <AiOutlineStar />
+            <AiOutlineLike />
             <span>777</span>
           </div>
           <div className={css.viewsWrapper}>

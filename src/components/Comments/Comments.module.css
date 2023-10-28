@@ -2,3 +2,14 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+}
+
+.text {
+  font-size: 20px;
+}
