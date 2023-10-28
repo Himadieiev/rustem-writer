@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineLike, AiOutlineRead } from "react-icons/ai";
 import { NavLink, useParams } from "react-router-dom";
 
@@ -6,10 +6,19 @@ import css from "./OneWork.module.css";
 import { books } from "../../constants";
 import Button from "../../components/Button/Button";
 import { avatar } from "./../../assets/images";
+import Description from "../../components/Description/Description";
+import BookContent from "../../components/BookContent/BookContent";
+import Comments from "../../components/Comments/Comments";
 
 const OneWork = () => {
   const { id } = useParams();
   const book = books[id - 1];
+
+  const [currentSubPage, setCurrentSubPage] = useState(1);
+
+  const handleLinkClick = (pageNumber) => {
+    setCurrentSubPage(pageNumber);
+  };
 
   return (
     <main className={css.oneWork}>
@@ -50,6 +59,21 @@ const OneWork = () => {
           </div>
         </div>
       </div>
+      <nav className={css.nav}>
+        <NavLink className={css.link} onClick={() => handleLinkClick(1)}>
+          Опис
+        </NavLink>
+        <NavLink className={css.link} onClick={() => handleLinkClick(2)}>
+          Зміст книги
+        </NavLink>
+        <NavLink className={css.link} onClick={() => handleLinkClick(3)}>
+          Коментарі
+        </NavLink>
+      </nav>
+      <div className={css.decor}></div>
+      {currentSubPage === 1 && <Description book={book} />}
+      {currentSubPage === 2 && <BookContent book={book} />}
+      {currentSubPage === 3 && <Comments />}
     </main>
   );
 };
