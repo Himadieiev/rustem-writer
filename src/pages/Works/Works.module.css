@@ -1,6 +1,8 @@
 .works {
   min-height: calc(100vh - 160px);
   padding-top: 80px;
+  padding-bottom: 20px;
+  background-color: rgb(251, 245, 236);
 }
 
 .worksWrapper {

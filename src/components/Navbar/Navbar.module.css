@@ -12,6 +12,16 @@
   justify-content: space-between;
 }
 
+.logoWrapper {
+  color: rgb(101, 90, 90);
+  transition: scale 0.2s linear, color 0.2s ease-in;
+}
+
+.logoWrapper:hover {
+  scale: 1.1;
+  color: rgb(164, 159, 159);
+}
+
 .logo {
   position: relative;
   font-size: 30px;

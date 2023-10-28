@@ -86,6 +86,15 @@
   font-size: 15px;
 }
 
+.likeIcon {
+  transition: scale 0.2s ease-in;
+  cursor: pointer;
+}
+
+.likeIcon:hover {
+  scale: 1.1;
+}
+
 .backLinkWrapper {
   display: flex;
   align-items: center;
@@ -93,10 +102,11 @@
   padding: 7px 15px;
   border-radius: 20px;
   font-size: 15px;
+  transition: background-color 0.2s ease-in;
 }
 
 .backLinkWrapper:hover {
-  background-color: rgb(221, 216, 216);
+  background-color: rgb(238, 234, 234);
 }
 
 .btn {
@@ -110,15 +120,16 @@
   gap: 50px;
   margin-top: 20px;
   padding: 10px 0;
+  color: rgb(2, 93, 2);
+  font-weight: 500;
 }
 
 .link {
-  color: rgb(58, 37, 37);
   transition: color 0.2s ease-in, scale 0.2s linear;
 }
 
 .link:hover {
-  color: rgb(1, 97, 1);
+  color: rgb(75, 75, 75);
   scale: 1.1;
 }
 

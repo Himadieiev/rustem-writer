@@ -21,11 +21,11 @@ const BookItem = ({ book }) => {
         </p>
         <div className={css.info}>
           <div className={css.likesWrapper}>
-            <AiOutlineLike />
+            <AiOutlineLike className={css.likeIcon} />
             <span>777</span>
           </div>
           <div className={css.viewsWrapper}>
-            <AiOutlineEye />
+            <AiOutlineEye className={css.eyeIcon} />
             <span>333</span>
           </div>
           <div className={css.infoTextWrapper}>

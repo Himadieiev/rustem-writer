@@ -44,7 +44,7 @@ const OneWork = () => {
             </div>
             <div className={css.linksWrapper}>
               <div className={css.likesWrapper}>
-                <AiOutlineLike />
+                <AiOutlineLike className={css.likeIcon} />
                 <span>33</span>
               </div>
               <div className={css.backLinkWrapper}>

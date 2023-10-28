@@ -8,6 +8,11 @@
   overflow: hidden;
   width: 200px;
   height: 290px;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.imgWrapper:hover {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 img {
@@ -57,6 +62,17 @@ img {
   justify-content: center;
   align-items: center;
   gap: 5px;
+}
+
+.likeIcon,
+.eyeIcon {
+  transition: scale 0.2s ease-in;
+  cursor: pointer;
+}
+
+.likeIcon:hover,
+.eyeIcon:hover {
+  scale: 1.1;
 }
 
 .viewsWrapper {

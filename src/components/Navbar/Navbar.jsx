@@ -12,9 +12,11 @@ const Navbar = () => {
     <header className={css.header}>
       <div className="container">
         <div className={css.headerTop}>
-          <NavLink to="/" className={css.logo}>
-            RH
-          </NavLink>
+          <div className={css.logoWrapper}>
+            <NavLink to="/" className={css.logo}>
+              RH
+            </NavLink>
+          </div>
           <nav className={css.nav}>
             <NavLink
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
