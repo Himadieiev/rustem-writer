@@ -112,6 +112,16 @@
   padding: 10px 0;
 }
 
+.link {
+  color: rgb(58, 37, 37);
+  transition: color 0.2s ease-in, scale 0.2s linear;
+}
+
+.link:hover {
+  color: rgb(1, 97, 1);
+  scale: 1.1;
+}
+
 .decor {
   height: 1px;
   width: 100%;

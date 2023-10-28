@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 
 const Navbar = () => {
+  const activeLink = `${css["link"]} ${css["activeLink"]}`;
+  const normalLink = css.link;
+
   return (
     <header className={css.header}>
       <div className="container">
@@ -13,13 +16,22 @@ const Navbar = () => {
             RH
           </NavLink>
           <nav className={css.nav}>
-            <NavLink className={css.link} to="/">
+            <NavLink
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              to="/"
+            >
               Головна
             </NavLink>
-            <NavLink className={css.link} to="/works">
+            <NavLink
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              to="/works"
+            >
               Твори
             </NavLink>
-            <NavLink className={css.link} to="/blog">
+            <NavLink
+              className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              to="/blog"
+            >
               Блог
             </NavLink>
           </nav>

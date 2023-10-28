@@ -52,7 +52,7 @@ const OneWork = () => {
               </div>
             </div>
             <div className={css.btn}>
-              <Button backgroundColor="login">
+              <Button backgroundColor="read">
                 <AiOutlineRead /> Читати
               </Button>
             </div>

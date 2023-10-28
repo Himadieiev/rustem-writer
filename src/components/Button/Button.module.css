@@ -5,10 +5,12 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
+  font-weight: 500;
 }
 
 .login {
   background-color: rgb(230, 224, 224);
+  transition: background-color 0.2s ease-in;
 }
 
 .login:hover {
@@ -17,8 +19,18 @@
 
 .register {
   background-color: rgb(206, 239, 206);
+  transition: background-color 0.2s ease-in;
 }
 
 .register:hover {
   background-color: rgb(186, 215, 186);
+}
+
+.read {
+  background-color: rgb(230, 224, 224);
+  transition: background-color 0.2s ease-in;
+}
+
+.read:hover {
+  background-color: rgb(211, 206, 206);
 }
