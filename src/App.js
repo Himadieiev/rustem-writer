@@ -6,6 +6,8 @@ import Layout from "./components/Layout/Layout";
 import Works from "./pages/Works/Works";
 import OneWork from "./pages/OneWork/OneWork";
 import Blog from "./pages/Blog/Blog";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/works" element={<Works />} />
           <Route path="/works/:id" element={<OneWork />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Route>
       </Routes>

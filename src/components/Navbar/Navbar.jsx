@@ -38,8 +38,12 @@ const Navbar = () => {
             </NavLink>
           </nav>
           <div className={css.btns}>
-            <Button backgroundColor="login">Вхід</Button>
-            <Button backgroundColor="register">Реєстрація</Button>
+            <NavLink to="/login">
+              <Button backgroundColor="login">Вхід</Button>
+            </NavLink>
+            <NavLink to="/register">
+              <Button backgroundColor="register">Реєстрація</Button>
+            </NavLink>
           </div>
         </div>
       </div>
