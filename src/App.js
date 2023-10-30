@@ -1,4 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./styles/common.css";
 import Home from "./pages/Home/Home";
@@ -23,6 +25,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
