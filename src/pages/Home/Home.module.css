@@ -1,17 +1,74 @@
 .home {
   min-height: calc(100vh - 80px);
   padding-top: 80px;
+  padding-bottom: 50px;
   background-size: cover;
   height: 100%;
 }
 
 .greet {
   margin-top: 50px;
+  margin-bottom: 70px;
+  text-align: center;
   font-size: 70px;
   font-weight: 500;
   color: rgb(67, 66, 66);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: Caveat;
+}
+
+.blocks {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.block {
+  display: flex;
+  gap: 40px;
+  justify-content: space-around;
+}
+
+.img {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+}
+
+.text {
+  font-family: Caveat;
+  font-size: 30px;
+  width: 500px;
+  padding-top: 20px;
+}
+
+.block2 {
+  display: flex;
+  gap: 40px;
+}
+
+.block3 {
+  display: flex;
+  gap: 40px;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translateX(-100%);
+}
+
+.hiddenReversed {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translateX(100%);
+}
+
+.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: 2s;
 }
