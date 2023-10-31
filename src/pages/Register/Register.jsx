@@ -21,7 +21,6 @@ const Register = () => {
   const [register, { isLoading }] = useRegisterMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
-  console.log(userInfo);
 
   useEffect(() => {
     if (userInfo) {
@@ -53,7 +52,6 @@ const Register = () => {
     } else {
       try {
         const res = await register({ name, email, password }).unwrap();
-        console.log(res);
         dispatch(setCredentials({ ...res }));
         navigate("/");
         toast.success("Реєстрація пройшла успішно");
