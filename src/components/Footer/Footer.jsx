@@ -8,7 +8,18 @@ const Footer = () => {
       <div className="container">
         <div className={css.footer__wrapper}>
           <div className={css.copyright}>
-            <p>© 2023 Created by Himadieiev Ruslan</p>
+            <p>
+              © 2023 Created by{" "}
+              <span className={css.link}>
+                <a
+                  href="https://www.linkedin.com/in/ruslan-himadieiev-32416b271/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Himadieiev Ruslan
+                </a>
+              </span>
+            </p>
           </div>
         </div>
       </div>

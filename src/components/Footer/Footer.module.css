@@ -29,3 +29,9 @@
     row-gap: 20px;
   }
 }
+
+.link {
+  color: rgb(241, 230, 230);
+  font-style: italic;
+  font-weight: 500;
+}
