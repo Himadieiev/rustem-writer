@@ -14,3 +14,28 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.item {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.item:hover,
+.item:focus {
+  color: rgb(5, 143, 5);
+}
+
+.icon {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.item:hover > .icon,
+.item:focus > .icon {
+  opacity: 1;
+}
+
+.chapterNumber {
+  font-size: 17px;
+}

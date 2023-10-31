@@ -52,9 +52,15 @@ const OneWork = () => {
               </div>
             </div>
             <div className={css.btn}>
-              <Button backgroundColor="read">
-                <AiOutlineRead /> Читати
-              </Button>
+              <a
+                href={book.wholeBookURL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button backgroundColor="read">
+                  <AiOutlineRead /> Читати
+                </Button>
+              </a>
             </div>
           </div>
         </div>

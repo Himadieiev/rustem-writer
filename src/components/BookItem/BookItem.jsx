@@ -1,10 +1,23 @@
 import React from "react";
 import { AiOutlineLike, AiOutlineEye, AiOutlineCheck } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import css from "./BookItem.module.css";
 
 const BookItem = ({ book }) => {
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const handleLike = () => {
+    if (!userInfo) {
+      toast.info("Авторизуйтесь, щоб поставити лайк");
+      return;
+    }
+
+    console.log("Лайк!");
+  };
+
   return (
     <li className={css.item}>
       <NavLink to={`/works/${book.id}`} className={css.imgWrapper}>
@@ -21,7 +34,7 @@ const BookItem = ({ book }) => {
         </p>
         <div className={css.info}>
           <div className={css.likesWrapper}>
-            <AiOutlineLike className={css.likeIcon} />
+            <AiOutlineLike className={css.likeIcon} onClick={handleLike} />
             <span>777</span>
           </div>
           <div className={css.viewsWrapper}>
