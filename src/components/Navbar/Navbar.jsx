@@ -40,6 +40,11 @@ const Navbar = () => {
               RH
             </NavLink>
           </div>
+          <div className={css.hamburger}>
+            <span className={css.hamburgerTop}></span>
+            <span className={css.hamburgerMiddle}></span>
+            <span className={css.hamburgerBottom}></span>
+          </div>
           <nav className={css.nav}>
             <NavLink
               className={({ isActive }) => (isActive ? activeLink : normalLink)}

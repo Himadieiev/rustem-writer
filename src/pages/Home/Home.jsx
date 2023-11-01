@@ -79,7 +79,7 @@ const Home = () => {
           </li>
           <li
             ref={elementRefs[1]}
-            className={`${css.block} 
+            className={`${css.block} ${css.blockRev}
               ${elVisibility[1] ? css.visible : css.hiddenReversed}`}
           >
             <div className={css.img}>

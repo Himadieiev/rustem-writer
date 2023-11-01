@@ -9,6 +9,8 @@
   border-bottom-right-radius: 20px;
   box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
   position: relative;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .bg-works {
