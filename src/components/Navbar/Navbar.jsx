@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useSpring, animated } from "@react-spring/web";
 
 import css from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import { useLogoutMutation } from "../../redux/slices/usersApiSlice";
 import { logout } from "../../redux/slices/authSlice";
+import { avatar } from "./../../assets/images";
 
 const Navbar = () => {
   const activeLink = `${css["link"]} ${css["activeLink"]}`;
   const normalLink = css.link;
+
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -31,16 +35,35 @@ const Navbar = () => {
     }
   };
 
+  const handleOpenMenu = () => {
+    setIsOpenMenu(!isOpenMenu);
+    document.getElementById("menu-btn").classList.toggle(css.open);
+  };
+
+  const menu = useSpring({
+    from: {
+      opacity: isOpenMenu ? 1 : 0,
+      transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
+    },
+    to: {
+      opacity: isOpenMenu ? 1 : 0,
+      transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
+    },
+    config: { duration: 300 },
+  });
+
   return (
     <header className={css.header}>
       <div className="container">
         <div className={css.headerTop}>
           <div className={css.logoWrapper}>
-            <NavLink to="/" className={css.logo}>
-              RH
+            <NavLink to="/">
+              <div className={css.avatarWrapper}>
+                <img src={avatar} alt="Avatar" width={160} />
+              </div>
             </NavLink>
           </div>
-          <div className={css.hamburger}>
+          <div className={css.hamburger} onClick={handleOpenMenu} id="menu-btn">
             <span className={css.hamburgerTop}></span>
             <span className={css.hamburgerMiddle}></span>
             <span className={css.hamburgerBottom}></span>
@@ -87,7 +110,20 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      <div className={css.decor}></div>
+      {isOpenMenu && (
+        <animated.nav className={css.menu} style={menu}>
+          <NavLink className={css.link} to="/">
+            Головна
+          </NavLink>
+          <NavLink className={css.link} to="/works">
+            Твори
+          </NavLink>
+          <NavLink className={css.link} to="/blog">
+            Блог
+          </NavLink>
+        </animated.nav>
+      )}
+      <div className={css.decor} />
     </header>
   );
 };
