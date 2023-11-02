@@ -40,7 +40,7 @@ const Navbar = () => {
     document.getElementById("menu-btn").classList.toggle(css.open);
   };
 
-  const menu = useSpring({
+  const isOpen = useSpring({
     from: {
       opacity: isOpenMenu ? 1 : 0,
       transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
@@ -49,8 +49,12 @@ const Navbar = () => {
       opacity: isOpenMenu ? 1 : 0,
       transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
     },
-    config: { duration: 300 },
+    config: { duration: 500 },
   });
+
+  const closeMenu = () => {
+    setIsOpenMenu(false);
+  };
 
   return (
     <header className={css.header}>
@@ -111,14 +115,14 @@ const Navbar = () => {
         </div>
       </div>
       {isOpenMenu && (
-        <animated.nav className={css.menu} style={menu}>
-          <NavLink className={css.link} to="/">
+        <animated.nav style={isOpen} className={css.menu}>
+          <NavLink className={css.link} to="/" onClick={closeMenu}>
             Головна
           </NavLink>
-          <NavLink className={css.link} to="/works">
+          <NavLink className={css.link} to="/works" onClick={closeMenu}>
             Твори
           </NavLink>
-          <NavLink className={css.link} to="/blog">
+          <NavLink className={css.link} to="/blog" onClick={closeMenu}>
             Блог
           </NavLink>
         </animated.nav>

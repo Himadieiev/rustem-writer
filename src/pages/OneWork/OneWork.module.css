@@ -3,20 +3,38 @@
   padding-top: 80px;
   margin-left: auto;
   margin-right: auto;
-  width: 1000px;
+  max-width: 1000px;
 }
 
 .topContent {
   display: flex;
-  margin-top: 40px;
-  gap: 30px;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .topContent {
+    flex-direction: row;
+    margin-top: 40px;
+    gap: 30px;
+  }
 }
 
 .imgWrapper {
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 20px;
   overflow: hidden;
-  width: 220px;
-  height: 320px;
+  width: 280px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .imgWrapper {
+    width: 200px;
+    height: 290px;
+  }
 }
 
 .info {
@@ -25,21 +43,45 @@
 }
 
 .title {
-  font-size: 27px;
+  font-size: 22px;
   font-weight: 700;
   margin-top: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 27px;
+    margin-top: 10px;
+    text-align: left;
+  }
 }
 
 .genre {
-  font-size: 15px;
+  font-size: 12px;
   margin-top: 10px;
   color: rgb(92, 91, 91);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .genre {
+    font-size: 15px;
+    text-align: left;
+  }
 }
 
 .authorWrapper {
   display: flex;
   gap: 5px;
   margin-top: 25px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .authorWrapper {
+    font-size: 18px;
+  }
 }
 
 .avatarWrapper {
@@ -63,6 +105,13 @@
   align-items: center;
   margin-top: 25px;
   font-weight: 500;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .pagesWrapper {
+    font-size: 18px;
+  }
 }
 
 .pages {
@@ -117,11 +166,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 40px;
   margin-top: 20px;
   padding: 10px 0;
   color: rgb(2, 93, 2);
   font-weight: 500;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    font-size: 18px;
+    gap: 50px;
+  }
 }
 
 .link {

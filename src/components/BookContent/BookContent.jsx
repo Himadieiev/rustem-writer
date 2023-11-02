@@ -16,7 +16,7 @@ const BookContent = ({ book }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className={css.chapterNumber}>{item.id} </span>
+              <span>{item.id} </span>
               {item.title} <AiOutlineRight className={css.icon} />
             </a>
           </li>
