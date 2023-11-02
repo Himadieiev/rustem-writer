@@ -1,14 +1,31 @@
 .item {
   display: flex;
+  flex-direction: column;
   gap: 30px;
 }
 
+@media (min-width: 768px) {
+  .item {
+    flex-direction: row;
+    padding: 0 10px;
+  }
+}
+
 .imgWrapper {
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
   overflow: hidden;
-  width: 200px;
-  height: 290px;
+  width: 280px;
+  height: auto;
   transition: box-shadow 0.2s ease-in;
+}
+
+@media (min-width: 768px) {
+  .imgWrapper {
+    width: 200px;
+    height: 290px;
+  }
 }
 
 .imgWrapper:hover {
@@ -23,38 +40,96 @@ img {
 }
 
 .content {
-  max-width: 770px;
+  width: 100%;
+  padding: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 0;
+    width: calc(100% - 250px);
+  }
 }
 
 .title {
-  margin-top: 5px;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    text-align: left;
+    margin-top: 5px;
+    font-size: 25px;
+  }
 }
 
 .genre {
+  text-align: center;
+  font-size: 15px;
   margin-top: 5px;
   color: rgb(89, 87, 87);
+}
+
+@media (min-width: 768px) {
+  .genre {
+    text-align: left;
+    font-size: 18px;
+  }
 }
 
 .text {
   margin-top: 20px;
   line-height: 1.5;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .text {
+    font-size: 18px;
+  }
 }
 
 .textContains {
   margin-top: 20px;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .textContains {
+    font-size: 18px;
+  }
 }
 
 .contains {
   color: rgb(100, 98, 98);
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.oneContain {
+  border: 1px solid rgb(236, 229, 229);
+  border-radius: 5px;
+  padding: 1px 3px;
+  background-color: rgb(236, 229, 229);
+  font-size: 15px;
 }
 
 .info {
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-top: 15px;
   color: rgb(60, 59, 59);
-  font-size: 16px;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .info {
+    font-size: 16px;
+  }
 }
 
 .likesWrapper {
@@ -64,14 +139,12 @@ img {
   gap: 5px;
 }
 
-.likeIcon,
-.eyeIcon {
+.likeIcon {
   transition: scale 0.2s ease-in;
   cursor: pointer;
 }
 
-.likeIcon:hover,
-.eyeIcon:hover {
+.likeIcon:hover {
   scale: 1.1;
 }
 
@@ -80,21 +153,18 @@ img {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  margin-left: 30px;
 }
 
 .infoTextWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  margin-left: 30px;
 }
 
 .decor {
-  height: 20px;
+  height: 16px;
   width: 1.5px;
   background-color: gray;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

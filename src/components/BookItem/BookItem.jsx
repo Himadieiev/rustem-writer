@@ -30,7 +30,14 @@ const BookItem = ({ book }) => {
         <p className={css.genre}>{book.genre}</p>
         <p className={css.text}>{book.textPart}</p>
         <p className={css.textContains}>
-          В текcті є: <span className={css.contains}>{book.textContains}</span>
+          В текcті є:{" "}
+          <span className={css.contains}>
+            {book.textContains.map((item, index) => (
+              <span key={index} className={css.oneContain}>
+                {item}
+              </span>
+            ))}
+          </span>
         </p>
         <div className={css.info}>
           <div className={css.likesWrapper}>
@@ -44,9 +51,9 @@ const BookItem = ({ book }) => {
           <div className={css.infoTextWrapper}>
             <AiOutlineCheck />
             <span>Повний текст</span>
+            <div className={css.decor}></div>
+            <div>{book.pages} стор.</div>
           </div>
-          <div className={css.decor}></div>
-          <div>{book.pages} стор.</div>
         </div>
       </div>
     </li>
