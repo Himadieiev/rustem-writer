@@ -43,17 +43,18 @@ const Navbar = () => {
   const isOpen = useSpring({
     from: {
       opacity: isOpenMenu ? 1 : 0,
-      transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
+      transform: isOpenMenu ? "translateY(0px)" : "translateY(-60px)",
     },
     to: {
       opacity: isOpenMenu ? 1 : 0,
-      transform: isOpenMenu ? "translateY(0)" : "translateY(-60px)",
+      transform: isOpenMenu ? "translateY(0px)" : "translateY(-60px)",
     },
-    config: { duration: 500 },
+    config: { duration: 400 },
   });
 
   const closeMenu = () => {
     setIsOpenMenu(false);
+    document.getElementById("menu-btn").classList.toggle(css.open);
   };
 
   return (
