@@ -57,6 +57,10 @@ const Navbar = () => {
     document.getElementById("menu-btn").classList.toggle(css.open);
   };
 
+  const closeUpdateProfile = () => {
+    navigate("/profile");
+  };
+
   return (
     <header className={css.header}>
       <div className="container">
@@ -106,7 +110,10 @@ const Navbar = () => {
           {userInfo && (
             <div className={css.userInfoWrapper}>
               <p className={css.userName}>
-                Вітаю, <span className={css.name}>{userInfo.name}</span>
+                Вітаю,{" "}
+                <span className={css.name} onClick={closeUpdateProfile}>
+                  {userInfo.name}
+                </span>
               </p>
               <div className={css.logout} onClick={handleLogout}>
                 <Button backgroundColor="login">Вихід</Button>

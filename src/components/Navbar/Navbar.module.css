@@ -166,6 +166,13 @@
 
 .name {
   font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s linear;
+}
+
+.name:hover {
+  color: rgb(6, 6, 6);
 }
 
 .hamburger {
