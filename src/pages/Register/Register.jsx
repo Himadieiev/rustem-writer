@@ -13,7 +13,6 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,25 +39,17 @@ const Register = () => {
     setPassword(e.target.value);
   };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
   const handleRegistration = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      toast.error("Паролі не співпадають");
-    } else {
-      try {
-        const res = await register({ name, email, password }).unwrap();
-        dispatch(setCredentials({ ...res }));
-        navigate("/");
-        toast.success("Реєстрація пройшла успішно");
-      } catch (err) {
-        console.log(err);
-        toast.error(err?.data?.message || err.error);
-      }
+    try {
+      const res = await register({ name, email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate("/");
+      toast.success("Реєстрація пройшла успішно");
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -104,19 +95,6 @@ const Register = () => {
                   value={password}
                   onChange={handlePasswordChange}
                   placeholder="Пароль"
-                />
-              </label>
-            </div>
-            <div>
-              <label className={css.label}>
-                Пароль ще раз
-                <br />
-                <input
-                  className={css.input}
-                  type="password"
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                  placeholder="Підтвердити пароль"
                 />
               </label>
             </div>

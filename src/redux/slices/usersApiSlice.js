@@ -1,11 +1,11 @@
 import { apiSlice } from "./apiSlice";
-const USERS_URL = "https://rustem-writer-backend.onrender.com/api/users";
+const USERS_URL = "https://rustem-writer-api.onrender.com/api/auth";
 
 export const userApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/auth`,
+        url: `${USERS_URL}/login`,
         method: "POST",
         body: data,
       }),
@@ -18,7 +18,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
     register: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}`,
+        url: `${USERS_URL}/register`,
         method: "POST",
         body: data,
       }),

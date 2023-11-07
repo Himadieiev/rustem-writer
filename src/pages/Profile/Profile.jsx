@@ -13,7 +13,7 @@ const Profile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,30 +39,22 @@ const Profile = () => {
     setPassword(e.target.value);
   };
 
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
   const updateUserHandler = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      toast.error("Паролі не співпадають");
-    } else {
-      try {
-        const res = await updateProfile({
-          _id: userInfo._id,
-          name,
-          email,
-          password,
-        }).unwrap();
+    try {
+      const res = await updateProfile({
+        _id: userInfo._id,
+        name,
+        email,
+        password,
+      }).unwrap();
 
-        dispatch(setCredentials(res));
-        toast.success("Профіль оновлено");
-        navigate("/");
-      } catch (err) {
-        toast.error(err?.data?.message || err.error);
-      }
+      dispatch(setCredentials(res));
+      toast.success("Профіль оновлено");
+      navigate("/");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
     }
   };
 
@@ -108,19 +100,6 @@ const Profile = () => {
                   value={password}
                   onChange={handlePasswordChange}
                   placeholder="Пароль"
-                />
-              </label>
-            </div>
-            <div>
-              <label className={css.label}>
-                Пароль ще раз
-                <br />
-                <input
-                  className={css.input}
-                  type="password"
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                  placeholder="Підтвердити пароль"
                 />
               </label>
             </div>
