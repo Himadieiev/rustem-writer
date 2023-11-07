@@ -5,26 +5,25 @@ import { toast } from "react-toastify";
 
 import css from "./Login.module.css";
 import Button from "../../components/Button/Button";
-import { useLoginMutation } from "../../redux/slices/usersApiSlice";
-import { setCredentials } from "../../redux/slices/authSlice";
 import Loader from "../../components/Loader/Loader";
+import { selectUser } from "../../redux/auth/selectors";
+import { logIn } from "../../redux/auth/thunks";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [login, { isLoading }] = useLoginMutation();
-
-  const { userInfo } = useSelector((state) => state.auth);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    if (userInfo) {
+    if (user.name) {
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  }, [navigate, user.name]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -36,13 +35,16 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     try {
-      const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...res }));
+      await dispatch(logIn(email, password));
       navigate("/");
       toast.success("Ви успішно авторизовані");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

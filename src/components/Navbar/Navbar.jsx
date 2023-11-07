@@ -7,9 +7,9 @@ import { useSpring, animated } from "@react-spring/web";
 import css from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
-import { useLogoutMutation } from "../../redux/slices/usersApiSlice";
-import { logout } from "../../redux/slices/authSlice";
 import { avatar } from "./../../assets/images";
+import { selectUser } from "../../redux/auth/selectors";
+import { logOut } from "../../redux/auth/thunks";
 
 const Navbar = () => {
   const activeLink = `${css["link"]} ${css["activeLink"]}`;
@@ -17,17 +17,14 @@ const Navbar = () => {
 
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [logoutApiCall] = useLogoutMutation();
-
   const handleLogout = async () => {
     try {
-      await logoutApiCall().unwrap();
-      dispatch(logout());
+      await dispatch(logOut());
       navigate("/login");
       toast.success("Вихід пройшов успішно");
     } catch (err) {
@@ -97,7 +94,7 @@ const Navbar = () => {
               Блог
             </NavLink>
           </nav>
-          {!userInfo && (
+          {!user.name && (
             <div className={css.btns}>
               <NavLink to="/login">
                 <Button backgroundColor="login">Вхід</Button>
@@ -107,12 +104,12 @@ const Navbar = () => {
               </NavLink>
             </div>
           )}
-          {userInfo && (
+          {user.name && (
             <div className={css.userInfoWrapper}>
               <p className={css.userName}>
                 Вітаю,{" "}
                 <span className={css.name} onClick={closeUpdateProfile}>
-                  {userInfo.name}
+                  {user.name}
                 </span>
               </p>
               <div className={css.logout} onClick={handleLogout}>

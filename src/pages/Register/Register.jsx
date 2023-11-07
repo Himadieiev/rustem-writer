@@ -5,27 +5,26 @@ import { toast } from "react-toastify";
 
 import css from "./Register.module.css";
 import Button from "../../components/Button/Button";
-import { useRegisterMutation } from "../../redux/slices/usersApiSlice";
-import { setCredentials } from "../../redux/slices/authSlice";
 import Loader from "../../components/Loader/Loader";
+import { register } from "../../redux/auth/thunks";
+import { selectUser } from "../../redux/auth/selectors";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [register, { isLoading }] = useRegisterMutation();
-
-  const { userInfo } = useSelector((state) => state.auth);
-
   useEffect(() => {
-    if (userInfo) {
+    if (user.name) {
       navigate("/");
     }
-  }, [navigate, userInfo]);
+  }, [navigate, user.name]);
 
   const handleUsernameChange = (e) => {
     setName(e.target.value);
@@ -41,15 +40,17 @@ const Register = () => {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
-      const res = await register({ name, email, password }).unwrap();
-      dispatch(setCredentials({ ...res }));
+      await dispatch(register({ name, email, password }));
       navigate("/");
       toast.success("Реєстрація пройшла успішно");
     } catch (err) {
       console.log(err);
       toast.error(err?.data?.message || err.error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
