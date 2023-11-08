@@ -90,7 +90,7 @@ export const editData = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.patch("/api/users/edit", credentials);
-      toast.success("User data updated successfully!");
+      // toast.success("User data updated successfully!");
       return res.data;
     } catch (error) {
       toast.error(`Something went wrong: ${error.message}`);

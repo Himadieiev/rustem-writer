@@ -54,7 +54,7 @@ const Navbar = () => {
     document.getElementById("menu-btn").classList.toggle(css.open);
   };
 
-  const closeUpdateProfile = () => {
+  const openUpdateProfile = () => {
     navigate("/profile");
   };
 
@@ -108,7 +108,7 @@ const Navbar = () => {
             <div className={css.userInfoWrapper}>
               <p className={css.userName}>
                 Вітаю,{" "}
-                <span className={css.name} onClick={closeUpdateProfile}>
+                <span className={css.name} onClick={openUpdateProfile}>
                   {user.name}
                 </span>
               </p>

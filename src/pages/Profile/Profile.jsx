@@ -5,27 +5,29 @@ import { toast } from "react-toastify";
 
 import css from "./Profile.module.css";
 import Button from "../../components/Button/Button";
-import { useUpdateUserMutation } from "../../redux/slices/usersApiSlice";
-import { setCredentials } from "../../redux/slices/authSlice";
 import Loader from "../../components/Loader/Loader";
+import { selectUser } from "../../redux/auth/selectors";
+import { editData } from "../../redux/auth/thunks";
 
 const Profile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [birthday, setBirthday] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { userInfo } = useSelector((state) => state.auth);
-
-  const [updateProfile, { isLoading }] = useUpdateUserMutation();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
-    setName(userInfo.name);
-    setEmail(userInfo.email);
-  }, [userInfo.email, userInfo.name]);
+    setName(user.name);
+    setEmail(user.email);
+    setPhone(user.phone || "");
+    setBirthday(user.birthday || "");
+  }, [user.birthday, user.email, user.name, user.phone]);
 
   const handleUsernameChange = (e) => {
     setName(e.target.value);
@@ -35,26 +37,34 @@ const Profile = () => {
     setEmail(e.target.value);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const handleBirthdayChange = (e) => {
+    setBirthday(e.target.value);
   };
 
   const updateUserHandler = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
-      const res = await updateProfile({
-        _id: userInfo._id,
-        name,
-        email,
-        password,
-      }).unwrap();
+      await dispatch(
+        editData({
+          name,
+          email,
+          phone,
+          birthday,
+        })
+      );
 
-      dispatch(setCredentials(res));
       toast.success("Профіль оновлено");
       navigate("/");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -92,14 +102,27 @@ const Profile = () => {
             </div>
             <div>
               <label className={css.label}>
-                Пароль
+                Телефон
                 <br />
                 <input
                   className={css.input}
-                  type="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  placeholder="Пароль"
+                  type="text"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  placeholder="Телефон"
+                />
+              </label>
+            </div>
+            <div>
+              <label className={css.label}>
+                День народження
+                <br />
+                <input
+                  className={css.input}
+                  type="date"
+                  value={birthday}
+                  onChange={handleBirthdayChange}
+                  placeholder="День народження"
                 />
               </label>
             </div>

@@ -38,7 +38,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      await dispatch(logIn(email, password));
+      await dispatch(logIn({ email, password }));
       navigate("/");
       toast.success("Ви успішно авторизовані");
     } catch (err) {
