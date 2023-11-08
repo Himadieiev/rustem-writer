@@ -40,7 +40,6 @@ const Login = () => {
     try {
       await dispatch(logIn({ email, password }));
       navigate("/");
-      toast.success("Ви успішно авторизовані");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     } finally {

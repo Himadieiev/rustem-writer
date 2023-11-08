@@ -20,9 +20,11 @@ export const register = createAsyncThunk(
 
       setAuthHeader(res.data.token);
 
+      toast.success("Реєстрація пройшла успішно");
+
       return res.data;
     } catch (error) {
-      toast.error(`${credentials.email} is already in use`);
+      toast.error(`${credentials.email} вже використовується`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -35,9 +37,12 @@ export const logIn = createAsyncThunk(
       const res = await axios.post("/api/auth/login", credentials);
 
       setAuthHeader(res.data.token);
+
+      toast.success("Ви успішно авторизовані");
+
       return res.data;
     } catch (error) {
-      toast.warning("The login or password is incorrect");
+      toast.error("Електронна адреса або пароль вказані невірно");
       return thunkAPI.rejectWithValue(error.message);
     }
   }

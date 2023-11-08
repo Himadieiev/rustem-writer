@@ -45,7 +45,6 @@ const Register = () => {
     try {
       await dispatch(register({ name, email, password }));
       navigate("/");
-      toast.success("Реєстрація пройшла успішно");
     } catch (err) {
       console.log(err);
       toast.error(err?.data?.message || err.error);
