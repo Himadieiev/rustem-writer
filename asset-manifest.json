@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rustem-writer/static/css/main.13bd6027.css",
-    "main.js": "/rustem-writer/static/js/main.65a1cbf7.js",
+    "main.js": "/rustem-writer/static/js/main.66a85f11.js",
     "static/media/bg-home.png": "/rustem-writer/static/media/bg-home.9a0a924229549e7c1648.png",
     "static/media/bg-works.png": "/rustem-writer/static/media/bg-works.98d7081e2d6db0fc1ab6.png",
     "static/media/bg-blog.png": "/rustem-writer/static/media/bg-blog.ad7d541aec262f24f2f6.png",
@@ -13,10 +13,10 @@
     "static/media/book2.jpg": "/rustem-writer/static/media/book2.ab98d588ea4d031037b9.jpg",
     "index.html": "/rustem-writer/index.html",
     "main.13bd6027.css.map": "/rustem-writer/static/css/main.13bd6027.css.map",
-    "main.65a1cbf7.js.map": "/rustem-writer/static/js/main.65a1cbf7.js.map"
+    "main.66a85f11.js.map": "/rustem-writer/static/js/main.66a85f11.js.map"
   },
   "entrypoints": [
     "static/css/main.13bd6027.css",
-    "static/js/main.65a1cbf7.js"
+    "static/js/main.66a85f11.js"
   ]
 }
