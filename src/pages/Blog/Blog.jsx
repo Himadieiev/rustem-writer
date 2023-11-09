@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaRegComment } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 import css from "./Blog.module.css";
 import Hero from "../../components/Hero/Hero";
@@ -7,8 +8,12 @@ import Button from "../../components/Button/Button";
 import BlogModal from "../../components/BlogModal/BlogModal";
 import BlogForm from "../../components/BlogForm/BlogForm";
 
+import { selectUser } from "../../redux/auth/selectors";
+
 const Blog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const user = useSelector(selectUser);
 
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
@@ -18,9 +23,11 @@ const Blog = () => {
     <main className={css.blog}>
       <div className="container">
         <Hero bg="bg-blog" />
-        <div className={css.btnWrapper} onClick={toggleModal}>
-          <Button backgroundColor="register">Додати новий пост</Button>
-        </div>
+        {user.email === "rustem@mail.com" && (
+          <div className={css.btnWrapper} onClick={toggleModal}>
+            <Button backgroundColor="register">Додати новий пост</Button>
+          </div>
+        )}
         <div className={css.blogItem}>
           <h2 className={css.title}>
             Уривок глави 30. Епілог. Тиша та спокій.
