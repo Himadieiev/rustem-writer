@@ -4,6 +4,16 @@
   padding-bottom: 50px;
   background-size: cover;
   height: 100%;
+  background-image: url(./../../assets/images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (min-width: 768px) {
+  .home {
+    background-image: url(./../../assets/images/home-bg.jpg);
+  }
 }
 
 .greet {
@@ -139,6 +149,7 @@
   .text {
     font-size: 25px;
     width: 100%;
+    color: white;
   }
 }
 

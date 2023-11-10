@@ -2,15 +2,15 @@
   min-height: calc(100vh - 160px);
   padding-top: 80px;
   padding-bottom: 20px;
-  background-color: rgb(251, 245, 236);
+  background-image: url(./../../assets/images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
 
 @media (min-width: 768px) {
   .works {
     background-image: url(./../../assets/images/works-bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
   }
 }
 
