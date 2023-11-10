@@ -5,6 +5,15 @@
   background-color: rgb(251, 245, 236);
 }
 
+@media (min-width: 768px) {
+  .works {
+    background-image: url(./../../assets/images/works-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
 .worksWrapper {
   margin-top: 40px;
 }
