@@ -55,7 +55,6 @@ export const logOut = createAsyncThunk(
       await axios.post("/api/auth/logout");
 
       clearAuthHeader();
-      // toast.success("You have been logged out successfully!");
     } catch (error) {
       toast.error("Logout failed. Please try again.");
       return thunkAPI.rejectWithValue(error.message);
@@ -95,7 +94,7 @@ export const editData = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.patch("/api/users/edit", credentials);
-      // toast.success("User data updated successfully!");
+
       return res.data;
     } catch (error) {
       toast.error(`Something went wrong: ${error.message}`);
