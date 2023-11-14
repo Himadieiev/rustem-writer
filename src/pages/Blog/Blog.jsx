@@ -9,7 +9,7 @@ import BlogModal from "../../components/BlogModal/BlogModal";
 import BlogForm from "../../components/BlogForm/BlogForm";
 import { selectUser } from "../../redux/auth/selectors";
 import { selectIsLoading, selectPosts } from "../../redux/posts/selectors";
-import { getPosts } from "../../redux/posts/thunks";
+import { createPost, getPosts } from "../../redux/posts/thunks";
 import Loader from "../../components/Loader/Loader";
 
 const Blog = () => {
@@ -18,24 +18,26 @@ const Blog = () => {
   const user = useSelector(selectUser);
   const posts = useSelector(selectPosts);
   const isLoading = useSelector(selectIsLoading);
-  const token = useSelector((state) => state.auth.token);
 
   const dispatch = useDispatch();
 
-  const [isTokenLoaded, setIsTokenLoaded] = useState(false);
-
   useEffect(() => {
-    setIsTokenLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (isTokenLoaded && token) {
-      dispatch(getPosts());
-    }
-  }, [dispatch, isTokenLoaded, token]);
+    dispatch(getPosts());
+  }, [dispatch]);
 
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
+  };
+
+  const handleFormSubmit = (data) => {
+    if (data) {
+      dispatch(createPost(data));
+    }
+  };
+
+  const handleAddPostBtn = () => {
+    handleFormSubmit();
+    toggleModal();
   };
 
   return (
@@ -43,7 +45,7 @@ const Blog = () => {
       <div className="container">
         <Hero bg="bg-blog" />
         {user.email === "rustem@mail.com" && (
-          <div className={css.btnWrapper} onClick={toggleModal}>
+          <div className={css.btnWrapper} onClick={handleAddPostBtn}>
             <Button backgroundColor="register">Додати новий пост</Button>
           </div>
         )}
@@ -67,7 +69,7 @@ const Blog = () => {
       </div>
       {isModalOpen && (
         <BlogModal toggleModal={toggleModal}>
-          <BlogForm toggleModal={toggleModal} />
+          <BlogForm toggleModal={toggleModal} onSubmit={handleFormSubmit} />
         </BlogModal>
       )}
     </main>

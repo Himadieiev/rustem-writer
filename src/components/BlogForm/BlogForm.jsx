@@ -4,7 +4,7 @@ import css from "./BlogForm.module.css";
 import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
 
-const BlogForm = ({ toggleModal }) => {
+const BlogForm = ({ toggleModal, onSubmit }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
@@ -22,10 +22,10 @@ const BlogForm = ({ toggleModal }) => {
     setDate(e.target.value);
   };
 
-  const handleBlog = (e) => {
+  const handleSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault();
-    console.log("New blog");
+    onSubmit({ title, text, date });
     toggleModal();
   };
 
@@ -33,7 +33,7 @@ const BlogForm = ({ toggleModal }) => {
     <div className={css.blogForm}>
       <div className={css.formWrapper}>
         <h1 className={css.title}>Створення посту</h1>
-        <form className={css.form} onSubmit={handleBlog}>
+        <form className={css.form} onSubmit={handleSubmit}>
           <div>
             <label className={css.label}>
               Назва

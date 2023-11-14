@@ -21,7 +21,7 @@ export const createPost = createAsyncThunk(
   "posts/createPost",
   async ({ title, text, date }, thunkAPI) => {
     try {
-      const response = await axios.post("/api/tasks", {
+      const response = await axios.post("/api/posts", {
         title,
         text,
         date,
