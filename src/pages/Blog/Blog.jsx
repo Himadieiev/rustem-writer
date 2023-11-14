@@ -9,11 +9,13 @@ import BlogModal from "../../components/BlogModal/BlogModal";
 import BlogForm from "../../components/BlogForm/BlogForm";
 import { selectUser } from "../../redux/auth/selectors";
 import { selectIsLoading, selectPosts } from "../../redux/posts/selectors";
-import { createPost, getPosts } from "../../redux/posts/thunks";
+import { createPost, editPost, getPosts } from "../../redux/posts/thunks";
 import Loader from "../../components/Loader/Loader";
 
 const Blog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingPost, setEditingPost] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const user = useSelector(selectUser);
   const posts = useSelector(selectPosts);
@@ -23,20 +25,34 @@ const Blog = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+  }, [dispatch, editingPost]);
 
   const toggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
-  const handleFormSubmit = (data) => {
+  const handleFormSubmit = async (data) => {
     if (data) {
-      dispatch(createPost(data));
+      if (isEditing) {
+        await dispatch(editPost(data));
+      } else {
+        await dispatch(createPost(data));
+      }
+
+      await dispatch(getPosts());
     }
   };
 
   const handleAddPostBtn = () => {
+    setEditingPost(null);
+    setIsEditing(false);
     handleFormSubmit();
+    toggleModal();
+  };
+
+  const handleEditPostBtn = (post) => {
+    setEditingPost(post);
+    setIsEditing(true);
     toggleModal();
   };
 
@@ -58,6 +74,20 @@ const Blog = () => {
                 <p className={css.text}>"{item.text}"</p>
                 <div className={css.bottomItem}>
                   <div>{item.date}</div>
+                  {user.email === "rustem@mail.com" && (
+                    <div className={css.btns}>
+                      <div
+                        className={css.editBtn}
+                        onClick={() => handleEditPostBtn(item)}
+                      >
+                        <Button backgroundColor="register">Редагувати</Button>
+                      </div>
+                      <div className={css.deleteBtn}>
+                        <Button backgroundColor="login">Видалити</Button>
+                      </div>
+                    </div>
+                  )}
+
                   <div className={css.commentWrapper}>
                     <FaRegComment />
                     <span>0</span>
@@ -69,7 +99,12 @@ const Blog = () => {
       </div>
       {isModalOpen && (
         <BlogModal toggleModal={toggleModal}>
-          <BlogForm toggleModal={toggleModal} onSubmit={handleFormSubmit} />
+          <BlogForm
+            toggleModal={toggleModal}
+            onSubmit={handleFormSubmit}
+            isEditing={isEditing}
+            editingPost={editingPost}
+          />
         </BlogModal>
       )}
     </main>

@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import css from "./BlogForm.module.css";
 import Button from "../Button/Button";
 import Loader from "../Loader/Loader";
 
-const BlogForm = ({ toggleModal, onSubmit }) => {
+const BlogForm = ({ toggleModal, onSubmit, isEditing, editingPost }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [date, setDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isEditing && editingPost) {
+      setTitle(editingPost.title || "");
+      setText(editingPost.text || "");
+      setDate(editingPost.date || "");
+    }
+  }, [isEditing, editingPost]);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -25,14 +33,22 @@ const BlogForm = ({ toggleModal, onSubmit }) => {
   const handleSubmit = (e) => {
     setIsLoading(true);
     e.preventDefault();
-    onSubmit({ title, text, date });
+
+    if (isEditing) {
+      onSubmit({ postId: editingPost._id, updatedData: { title, text, date } });
+    } else {
+      onSubmit({ title, text, date });
+    }
+
+    setIsLoading(false);
     toggleModal();
   };
 
   return (
     <div className={css.blogForm}>
       <div className={css.formWrapper}>
-        <h1 className={css.title}>Створення посту</h1>
+        {!isEditing && <h1 className={css.title}>Створення посту</h1>}
+        {isEditing && <h1 className={css.title}>Оновлення посту</h1>}
         <form className={css.form} onSubmit={handleSubmit}>
           <div>
             <label className={css.label}>
@@ -73,7 +89,7 @@ const BlogForm = ({ toggleModal, onSubmit }) => {
           </div>
           <div className={css.btnWrapper}>
             <Button backgroundColor="register" type="submit">
-              Створити
+              {!isEditing ? "Створити" : "Редагувати"}
             </Button>
           </div>
           {isLoading && <Loader />}

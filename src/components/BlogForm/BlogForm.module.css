@@ -76,4 +76,5 @@ textarea:hover {
 
 textarea {
   resize: none;
+  height: 225px;
 }

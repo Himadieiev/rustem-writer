@@ -86,3 +86,22 @@
     font-size: 15px;
   }
 }
+
+.btns {
+  color: black;
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+}
+
+@media (min-width: 768px) {
+  .btns {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .btns {
+    font-size: 15px;
+  }
+}

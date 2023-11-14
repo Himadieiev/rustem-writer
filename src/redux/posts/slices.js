@@ -53,9 +53,9 @@ export const postSlice = createSlice({
       .addCase(editPost.rejected, handleRejected)
       .addCase(editPost.fulfilled, (state, action) => {
         const updatedPost = action.payload;
-        const taskIdToUpdate = updatedPost._id;
+        const postIdToUpdate = updatedPost._id;
         const updatedItems = state.items.map((post) =>
-          post._id === taskIdToUpdate ? updatedPost : post
+          post._id === postIdToUpdate ? updatedPost : post
         );
         state.items = updatedItems;
         state.isLoading = false;
