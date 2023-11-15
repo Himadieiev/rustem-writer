@@ -9,7 +9,12 @@ import BlogModal from "../../components/BlogModal/BlogModal";
 import BlogForm from "../../components/BlogForm/BlogForm";
 import { selectUser } from "../../redux/auth/selectors";
 import { selectIsLoading, selectPosts } from "../../redux/posts/selectors";
-import { createPost, editPost, getPosts } from "../../redux/posts/thunks";
+import {
+  createPost,
+  editPost,
+  getPosts,
+  removePost,
+} from "../../redux/posts/thunks";
 import Loader from "../../components/Loader/Loader";
 
 const Blog = () => {
@@ -56,6 +61,11 @@ const Blog = () => {
     toggleModal();
   };
 
+  const handleDeletePostBtn = async (id) => {
+    await dispatch(removePost(id));
+    await dispatch(getPosts());
+  };
+
   return (
     <main className={css.blog}>
       <div className="container">
@@ -82,7 +92,10 @@ const Blog = () => {
                       >
                         <Button backgroundColor="register">Редагувати</Button>
                       </div>
-                      <div className={css.deleteBtn}>
+                      <div
+                        className={css.deleteBtn}
+                        onClick={() => handleDeletePostBtn(item._id)}
+                      >
                         <Button backgroundColor="login">Видалити</Button>
                       </div>
                     </div>
