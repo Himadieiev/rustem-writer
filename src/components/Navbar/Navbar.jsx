@@ -39,8 +39,8 @@ const Navbar = () => {
 
   const isOpen = useSpring({
     from: {
-      opacity: isOpenMenu ? 1 : 0,
-      transform: isOpenMenu ? "translateY(0px)" : "translateY(-60px)",
+      opacity: !isOpenMenu ? 1 : 0,
+      transform: !isOpenMenu ? "translateY(0px)" : "translateY(-60px)",
     },
     to: {
       opacity: isOpenMenu ? 1 : 0,

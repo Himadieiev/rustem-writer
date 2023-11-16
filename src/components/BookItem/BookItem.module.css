@@ -31,7 +31,7 @@
 }
 
 .imgWrapper:hover {
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 7px 5px rgba(0, 0, 0, 0.5);
 }
 
 img {
@@ -57,6 +57,7 @@ img {
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+  transition: color 0.2s linear;
 }
 
 @media (min-width: 768px) {
@@ -65,6 +66,10 @@ img {
     margin-top: 5px;
     font-size: 25px;
   }
+}
+
+.title:hover {
+  color: rgb(8, 162, 8);
 }
 
 .genre {
@@ -112,11 +117,18 @@ img {
 }
 
 .oneContain {
-  border: 1px solid rgb(236, 229, 229);
+  border: 1px solid rgb(155, 154, 154);
   border-radius: 5px;
   padding: 1px 3px;
-  background-color: rgb(236, 229, 229);
+  background-color: rgb(244, 213, 154);
   font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .oneContain {
+    background-color: rgb(236, 229, 229);
+    border: 1px solid rgb(236, 229, 229);
+  }
 }
 
 .info {
