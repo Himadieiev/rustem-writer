@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaRegComment } from "react-icons/fa6";
+import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 
 import css from "./Blog.module.css";
@@ -90,13 +91,17 @@ const Blog = () => {
                         className={css.editBtn}
                         onClick={() => handleEditPostBtn(item)}
                       >
-                        <Button backgroundColor="register">Редагувати</Button>
+                        <Button backgroundColor="register">
+                          <AiOutlineEdit />
+                        </Button>
                       </div>
                       <div
                         className={css.deleteBtn}
                         onClick={() => handleDeletePostBtn(item._id)}
                       >
-                        <Button backgroundColor="login">Видалити</Button>
+                        <Button backgroundColor="login">
+                          <AiOutlineDelete />
+                        </Button>
                       </div>
                     </div>
                   )}
