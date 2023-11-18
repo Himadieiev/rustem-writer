@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegComment } from "react-icons/fa6";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import css from "./Blog.module.css";
 import Hero from "../../components/Hero/Hero";
@@ -41,8 +42,10 @@ const Blog = () => {
     if (data) {
       if (isEditing) {
         await dispatch(editPost(data));
+        toast.success("Пост відредаговано успішно");
       } else {
         await dispatch(createPost(data));
+        toast.success("Пост створено успішно");
       }
 
       await dispatch(getPosts());
@@ -64,6 +67,7 @@ const Blog = () => {
 
   const handleDeletePostBtn = async (id) => {
     await dispatch(removePost(id));
+    toast.success("Пост видалено успішно");
     await dispatch(getPosts());
   };
 

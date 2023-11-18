@@ -39,7 +39,13 @@ function App() {
           <Route path="/*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        theme="colored"
+        pauseOnHover
+        draggable
+      />
     </div>
   );
 }
