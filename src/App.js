@@ -15,6 +15,7 @@ import Register from "./pages/Register/Register";
 import Profile from "./pages/Profile/Profile";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { refreshUser } from "./redux/auth/thunks";
+import Chapter from "./pages/Chapter/Chapter";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/chapters/:id" element={<Chapter />} />
           </Route>
           <Route path="/*" element={<Navigate to="/" />} />
         </Route>
