@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineLike, AiOutlineRead } from "react-icons/ai";
-import { NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 import css from "./OneWork.module.css";
 import { books } from "../../constants";
@@ -52,15 +52,11 @@ const OneWork = () => {
               </div>
             </div>
             <div className={css.btn}>
-              <a
-                href={book.wholeBookURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link to={"/chapters/1"}>
                 <Button backgroundColor="read">
                   <AiOutlineRead /> Читати
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

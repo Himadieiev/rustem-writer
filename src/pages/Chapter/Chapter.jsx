@@ -4,9 +4,9 @@ import css from "./Chapter.module.css";
 
 const Chapter = () => {
   return (
-    <main>
+    <main className={css.chapter}>
       <div className="container">
-        <div className={css.chapterWrapper}>Chapter</div>
+        <div>Chapter</div>
       </div>
     </main>
   );

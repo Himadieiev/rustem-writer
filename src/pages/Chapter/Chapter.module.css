@@ -1,2 +1,9 @@
-.chapterWrapper {
+.chapter {
+  min-height: calc(100vh - 80px);
+  padding-top: 80px;
+  padding-bottom: 30px;
+  background-image: url(./../../assets/images/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 }
