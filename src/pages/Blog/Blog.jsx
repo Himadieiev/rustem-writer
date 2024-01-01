@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 import css from "./Blog.module.css";
-import Hero from "../../components/Hero/Hero";
+// import Hero from "../../components/Hero/Hero";
 import Button from "../../components/Button/Button";
 import BlogModal from "../../components/BlogModal/BlogModal";
 import BlogForm from "../../components/BlogForm/BlogForm";
@@ -74,7 +74,7 @@ const Blog = () => {
   return (
     <main className={css.blog}>
       <div className="container">
-        <Hero bg="bg-blog" />
+        {/* <Hero bg="bg-blog" /> */}
         {user.email === "rustem@mail.com" && (
           <div className={css.btnWrapper} onClick={handleAddPostBtn}>
             <Button backgroundColor="register">Додати новий пост</Button>

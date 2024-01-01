@@ -1,16 +1,16 @@
 import React from "react";
 
 import css from "./Works.module.css";
-import Hero from "../../components/Hero/Hero";
+// import Hero from "../../components/Hero/Hero";
 import { books } from "../../constants";
 import BookItem from "../../components/BookItem/BookItem";
 
 const Works = () => {
   return (
     <main className={css.works}>
-      <div className="container">
+      {/* <div className="container">
         <Hero bg="bg-works" />
-      </div>
+      </div> */}
       <div className={css.worksWrapper}></div>
       <ul className={css.list}>
         {books.map((book) => (
