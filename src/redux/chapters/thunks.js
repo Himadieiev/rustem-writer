@@ -24,14 +24,14 @@ export const getChapterById = createAsyncThunk(
       const res = await axios.get(`/api/chapters/${chapterId}`);
       return res.data;
     } catch (error) {
-      toast.error("Error while loadin chapter: " + error.message);
+      toast.error("Error while loading chapter: " + error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const createChapters = createAsyncThunk(
-  "chapters/createChapters",
+export const createChapter = createAsyncThunk(
+  "chapters/createChapter",
   async ({ title, text }, thunkAPI) => {
     try {
       const response = await axios.post("/api/chapters", {
