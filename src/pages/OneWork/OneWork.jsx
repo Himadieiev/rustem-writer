@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineLike, AiOutlineRead } from "react-icons/ai";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import css from "./OneWork.module.css";
 import { books } from "../../constants";
@@ -9,8 +11,12 @@ import { avatar } from "./../../assets/images";
 import Description from "../../components/Description/Description";
 import BookContent from "../../components/BookContent/BookContent";
 import Comments from "../../components/Comments/Comments";
+import { selectUser } from "../../redux/auth/selectors";
 
 const OneWork = () => {
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const book = books[id - 1];
 
@@ -18,6 +24,14 @@ const OneWork = () => {
 
   const handleLinkClick = (pageNumber) => {
     setCurrentSubPage(pageNumber);
+  };
+
+  const hadleReadBtnClick = () => {
+    if (user.name) {
+      navigate(`/chapters/1`);
+    } else {
+      toast.error("Спочатку увійдіть у систему");
+    }
   };
 
   return (
@@ -51,12 +65,10 @@ const OneWork = () => {
                 <NavLink to="/works">Назад до творів</NavLink>
               </div>
             </div>
-            <div className={css.btn}>
-              <Link to={"/chapters/1"}>
-                <Button backgroundColor="read">
-                  <AiOutlineRead /> Читати
-                </Button>
-              </Link>
+            <div className={css.btn} onClick={hadleReadBtnClick}>
+              <Button backgroundColor="read">
+                <AiOutlineRead /> Читати
+              </Button>
             </div>
           </div>
         </div>
