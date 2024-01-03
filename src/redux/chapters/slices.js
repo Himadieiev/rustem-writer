@@ -57,16 +57,6 @@ export const chapterSlice = createSlice({
           ...state,
           isLoading: false,
           error: null,
-          items: action.payload ? state.items : state.items,
-        };
-      })
-      .addCase(getChapterById.pending, handlePending)
-      .addCase(getChapterById.rejected, handleRejected)
-      .addCase(getChapterById.fulfilled, (state, action) => {
-        return {
-          ...state,
-          isLoading: false,
-          error: null,
           currentChapter: action.payload,
         };
       });
